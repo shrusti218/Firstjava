@@ -1,0 +1,112 @@
+package p1;
+import java.util.*;
+public class Account {
+	    private int id;
+	    private double balance;
+	    private double annualinterestRate=4.5/100;
+	    private String data;
+	    Account(){
+	        int id=0;
+	        double balance=0.0;
+	        double annualinterestRate=4.5/100;
+	    }
+	     Account(int i,double b,String date) {
+	    	id=i;
+	    	balance=b;
+	    	data=date;
+	    }
+	    public int getid()
+	    {
+	    	return id;
+	    }
+	    public double getbalance(){
+	    	return balance;
+	    }
+	    public double getannualinterestRate() {
+	    	return annualinterestRate;
+	    }
+	    public String getdata() {
+	    	return data;
+	    }
+	    public void setid(int id) {
+	    	this.id=id;
+	    }
+	    public void setbalance(double balance) {
+	    	this.balance=balance;
+	    }
+	    public void setannualinterestRate(double annualinterestRate) {
+	    	this.annualinterestRate=annualinterestRate;
+	    }
+	    double getMonthlyInterestRate() {
+	    	return(annualinterestRate/12);  	
+	    
+	    }
+	    void getMonthlyInterest() {
+	    	double monthlyinterest=balance*getMonthlyInterestRate();
+	    	System.out.println("Total Monthly Interest is: " + monthlyinterest);
+	    }
+	    
+	    void withdraw(int amt) {
+	    	balance=balance-amt;
+	    	System.out.println("After withdrawing the total amount: " + balance);
+	    }
+	    
+	    void deposit(int mon) {
+	    	balance=balance + mon;
+	    	System.out.println("After deposite the total amount: " + balance);
+	    }
+		public static void main(String[] args) {
+		   Scanner sc= new Scanner(System.in);
+		   System.out.println("Enter the number of clients present");
+		   int user=sc.nextInt();
+            Account [] client=new Account[user];
+            for(int i=0;i<user;i++) {
+				System.out.println("Enter the identity");
+				int id=sc.nextInt();
+				System.out.println("Identity: " + id);
+				system.out.println("Enter the Balance");
+				int balance=sc.nextDouble();
+				System.out.println("Total Balance is: " + balance);
+				}
+            		System.out.println("\n ***Banking System Application***");  
+            		System.out.println(" 1. Display all account details \n 2. Balance after withdraw\n 3. Balance after deposit \n 4.    
+                  MonthlyInterest amount \n 5.Exit ");  
+                  System.out.println("Enter your choice: ");  
+                  int ch=sc.nextInt();
+            	do  {
+	            switch(option) {
+	            case 1:
+	            	System.out.println("ID: " + client.getid());
+	            	System.out.println("Date: " + client.getdata());
+	            	System.out.println("Balance: " + client.getbalance());   
+	            	break;
+	            
+	            case 2:
+	        		System.out.println("Enter a Amount: ");  
+	        	    int amt=sc.nextInt();
+	        	    client.withdraw(amt);
+	            	break;
+	            
+	            case 3:
+	        		System.out.println("Enter a Amount: ");  
+	        		int mon=sc.nextInt();
+	        		client.deposit(mon);
+	        		break;
+	        		
+	            case 4:
+	            	System.out.println("Monthly Interest is: ");
+	            	client.getMonthlyInterest();
+	            	break;
+	            	
+	            }
+	        }
+	            while(ch==5);
+	            	System.out.println("Exit");
+	            	
+	        }
+		}
+	            
+	       
+	        
+		 
+
