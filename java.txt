@@ -1,3 +1,4 @@
 hello goog morning
-how r you
+how are you
 
+Adding new line
