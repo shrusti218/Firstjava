@@ -1,0 +1,119 @@
+package Day3.arraylist;
+import java.util.Scanner;
+import java.util.ArrayList;
+
+class Employee  {
+	
+		ArrayList<String> Employeename=new ArrayList<String>();  
+		ArrayList<Long> EmployeeId=new ArrayList<Long>(); 
+		ArrayList<Long> Salary=new ArrayList<Long>(); 
+		Scanner sc=new Scanner(System.in);
+
+		void employeeDetails() {
+			System.out.println("Enter the number of employee present");
+			int count=sc.nextInt();
+			for(int i=0; i<count; i++) {
+				System.out.println("Employee Information");
+				System.out.println("Name of the Employee:  ");
+				Employeename.add(sc.next());
+				System.out.println("Employee ID:  ");
+				EmployeeId.add(sc.nextLong());
+				System.out.println("Salary of the Employee:  ");
+				Salary.add(sc.nextLong());
+				
+			}
+}
+		
+		void addEmployee() {
+			System.out.println("Enter the number employee to be add: ");
+			int n=sc.nextInt();
+			int size= Employeename.size();
+			for(int i=size; i< size+n; i++) {
+				System.out.println("Employee Information");
+				System.out.println("Name of the Employee:  ");
+				Employeename.add(sc.next());
+				System.out.println("Employee ID:  ");
+				EmployeeId.add(sc.nextLong());
+				System.out.println("Salary of the Employee:  ");
+				Salary.add(sc.nextLong());
+				
+			}
+				System.out.println("Employee Name: " + Employeename + "\nEmployee ID: " + EmployeeId + "\nEmployee Salary: " + Salary);
+		}
+		void deleteEmployee() {
+			System.out.println("Enter the Id to be removed: ");
+			Long delete=sc.nextLong();
+			for(int i=0; i<EmployeeId.size(); i++) {
+				if(delete.equals(EmployeeId.get(i))) {
+					EmployeeId.remove(i);
+					Employeename.remove(i);
+					Salary.remove(i);
+				}
+			}
+			System.out.println("Employee Name: " + Employeename + "\nEmployee ID: " + EmployeeId + "\nEmployee Salary: " + Salary);
+		}
+		void searchRecord() {
+			System.out.println("Enter the ID to search: ");
+			Long search=sc.nextLong();
+			for(int i=0; i<EmployeeId.size(); i++) {
+				if(search.equals(EmployeeId.get(i))) {
+					System.out.println("Employee Name: " + Employeename.get(i) + "\nEmployee ID: " + EmployeeId.get(i) + "\nEmployee Salary: " + Salary.get(i));
+				}
+				//System.out.println("Employee ID not found...Enter correct ID");
+		}			
+			
+	}
+		void updateRecord() {
+			System.out.println("Enter the Id to update: ");
+			Long update=sc.nextLong();
+			System.out.println("Enter the Employee name: ");
+			String nameupdate=sc.next();
+			System.out.println("Enter the Salary: ");
+			Long newsalary=sc.nextLong();
+			for(int i=0; i<EmployeeId.size(); i++) {
+				if(update.equals(EmployeeId.get(i))) {
+					Employeename.set(i, nameupdate);
+					Salary.set(i, newsalary);
+				}
+		
+			}
+			
+		}
+		void finalRecord() {
+			System.out.println("Employee Name: " + Employeename + "\nEmployee ID: " + EmployeeId + "\nEmployee Salary: " + Salary);
+		}
+}
+
+public class Main{
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		Employee e=new Employee();
+		e.employeeDetails();
+		boolean check=true;
+		while(check) {
+		System.out.println("1. Add Records\n2. Remove Records\n3. Search Records\n4. Update Record\n5. Final Record\n");
+		int choose=sc.nextInt();
+		if(choose==1) {
+			e.addEmployee();
+		}
+		else if(choose==2) {
+			e.deleteEmployee();
+		}
+		else if(choose==3) {
+			e.searchRecord();
+		}
+		else if(choose==4) {
+			e.updateRecord();
+		}
+		else if(choose==5) {
+			e.finalRecord();
+		}
+		else {
+			System.out.println("Enter correct number");
+			check= false;
+		}
+	}
+		sc.close();
+}
+}
+
